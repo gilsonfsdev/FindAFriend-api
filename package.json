@@ -1,0 +1,29 @@
+{
+  "name": "findafriend-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "start": "node build/server.js",
+    "build": "tsup src --out-dir build"
+  },
+  "keywords": [],
+  "author": "Gilson Ferreira de Souza",
+  "license": "ISC",
+  "devDependencies": {
+    "@rocketseat/eslint-config": "2.1.0",
+    "@types/node": "^20.7.0",
+    "eslint": "8.50.0",
+    "prisma": "5.3.1",
+    "tsup": "^7.2.0",
+    "tsx": "^3.13.0",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "@prisma/client": "5.3.1",
+    "dotenv": "16.3.1",
+    "fastify": "^4.23.2",
+    "zod": "3.22.2"
+  }
+}

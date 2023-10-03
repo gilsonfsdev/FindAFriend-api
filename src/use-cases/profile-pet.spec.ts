@@ -5,7 +5,7 @@ import { ProfilePetUseCase } from './profile-pet'
 let petsRepository: InMemoryPetsRepository
 let sut: ProfilePetUseCase
 
-describe('Register Pet Use Case', () => {
+describe('Profile Pet Use Case', () => {
   beforeEach(() => {
     petsRepository = new InMemoryPetsRepository()
     sut = new ProfilePetUseCase(petsRepository)

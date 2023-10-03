@@ -5,6 +5,10 @@ import { petsRepository } from '../pets-repository'
 export class InMemoryPetsRepository implements petsRepository {
   public items: Pet[] = []
 
+  async findManyByCity(city: string) {
+    return this.items.filter((item) => item.city === city)
+  }
+
   async findById(id: string) {
     const pet = this.items.find((item) => item.id === id)
 

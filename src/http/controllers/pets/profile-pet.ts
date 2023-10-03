@@ -13,5 +13,5 @@ export async function profilePet(request: FastifyRequest, reply: FastifyReply) {
 
   const { pet } = await profilPetUseCase.execute({ id })
 
-  return reply.status(200).send({ ...pet, password: undefined })
+  return reply.status(200).send({ pet })
 }

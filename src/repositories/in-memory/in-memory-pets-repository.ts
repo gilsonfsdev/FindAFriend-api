@@ -5,8 +5,20 @@ import { petsRepository } from '../pets-repository'
 export class InMemoryPetsRepository implements petsRepository {
   public items: Pet[] = []
 
-  async findManyByCity(city: string) {
-    return this.items.filter((item) => item.city === city)
+  async findManyByFilters(data: Partial<Prisma.PetCreateManyOrgInput>) {
+    const pets = this.items.filter((item) => {
+      for (const key in data) {
+        if (
+          item[key as keyof Prisma.PetCreateManyOrgInput] !==
+          data[key as keyof Prisma.PetCreateManyOrgInput]
+        ) {
+          return false
+        }
+      }
+      return true
+    })
+
+    return pets
   }
 
   async findById(id: string) {

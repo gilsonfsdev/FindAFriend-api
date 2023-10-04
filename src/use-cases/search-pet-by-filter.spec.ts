@@ -1,17 +1,17 @@
 import { beforeEach, describe, expect, it } from 'vitest'
 import { InMemoryPetsRepository } from '@/repositories/in-memory/in-memory-pets-repository'
-import { GetPetByCityUseCase } from './get-pet-by-city'
+import { SearchPetByFiltersUseCase } from './search-pet-by-filter'
 
 let petsRepository: InMemoryPetsRepository
-let sut: GetPetByCityUseCase
+let sut: SearchPetByFiltersUseCase
 
-describe('Get Pets By City Use Case', () => {
+describe('Search Pets By Filters Use Case', () => {
   beforeEach(() => {
     petsRepository = new InMemoryPetsRepository()
-    sut = new GetPetByCityUseCase(petsRepository)
+    sut = new SearchPetByFiltersUseCase(petsRepository)
   })
 
-  it('should be able to search pets by city', async () => {
+  it('should be able to search pets by filters', async () => {
     await petsRepository.create({
       name: 'Teste 01',
       description: 'Teste description',
@@ -33,12 +33,12 @@ describe('Get Pets By City Use Case', () => {
       energy: 'CALM',
       size: 'MEDIUM',
       independency: 'LOW',
-      city: 'Cabedelo',
+      city: 'Maringa',
       photo: 'foto 1',
       org_id: 'org-1',
     })
 
-    const { pets } = await sut.execute({ city: 'Maringa' })
+    const { pets } = await sut.execute({ city: 'Maringa', type: 'DOG' })
 
     expect(pets).toHaveLength(1)
   })

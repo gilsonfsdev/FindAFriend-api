@@ -4,12 +4,12 @@ import { verifyJWT } from '@/middlewares/verify-jwt'
 
 import { create } from './create'
 import { profilePet } from './profile-pet'
-import { getPetByCity } from './get-pets-by-city'
+import { searchPetsByFilters } from './search-pets-by-filters'
 
 export async function PetsRoutes(app: FastifyInstance) {
   /* Authenticated */
   app.post('/pets', { onRequest: [verifyJWT] }, create)
 
   app.get('/pets/:id', profilePet)
-  app.get('/pets/city', getPetByCity)
+  app.get('/pets/filters', searchPetsByFilters)
 }

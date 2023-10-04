@@ -3,11 +3,9 @@ import { Prisma } from '@prisma/client'
 import { petsRepository } from '../pets-repository'
 
 export class PrismaPetsRepository implements petsRepository {
-  async findManyByCity(city: string) {
+  async findManyByFilters(data: Partial<Prisma.PetCreateManyOrgInput>) {
     const pets = await prisma.pet.findMany({
-      where: {
-        city,
-      },
+      where: data,
     })
 
     return pets

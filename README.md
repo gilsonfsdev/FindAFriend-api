@@ -1,6 +1,31 @@
-# App
+# Find a Friend
 
-Find a Friend style app.
+A "Find a Friend" é uma API Rest para adoção de cães e gatos. Nela é possível se registrar como organização e então cadastrar seus animais que estão para adoção. O usuário tem a possibilidade de visualizar estes animais e aplicar filtros por cidade, tipo do animal, tamanho entre outros.
+
+### 🎲 Rodando o Back End (servidor)
+
+```bash
+# Clone Repository
+$ git clone https://github.com/gilsonfsdev/FindAFriend-api.git
+
+# Go to server folder
+$ cd findafriend-api
+
+# Install Dependencies
+$ npm install
+
+# rename file .env.example to .env
+
+# run docker compose
+$ docker compose up -d
+
+# run prisma
+$ npx prisma migrate dev
+
+# Run Tests
+$ npm run test
+$ npm run test:e2e
+```
 
 ## RFs (Requisitos funcionais) - O que é possível o usuário fazer na aplicação.
 

@@ -10,7 +10,7 @@ export async function searchPetsByFilters(
     age: z.string().optional(),
     size: z.string().optional(),
     type: z.string().optional(),
-    city: z.string(),
+    city: z.string().optional(),
   })
 
   const { age, size, type, city } = searchPetsByFiltersQuerySchema.parse(

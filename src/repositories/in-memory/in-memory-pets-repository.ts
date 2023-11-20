@@ -5,6 +5,20 @@ import { petsRepository } from '../pets-repository'
 export class InMemoryPetsRepository implements petsRepository {
   public items: Pet[] = []
 
+  async delete(pet: Pet) {
+    const itemIndex = this.items.findIndex((item) => item.id === pet.id)
+
+    this.items.splice(itemIndex, 1)
+  }
+
+  async save(pet: Pet) {
+    const itemIndex = this.items.findIndex((item) => item.id === pet.id)
+
+    this.items[itemIndex] = pet
+
+    return this.items[itemIndex]
+  }
+
   async findManyByFilters(data: Partial<Prisma.PetCreateManyOrgInput>) {
     const pets = this.items.filter((item) => {
       for (const key in data) {

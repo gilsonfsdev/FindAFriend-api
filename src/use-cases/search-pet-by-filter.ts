@@ -5,7 +5,7 @@ interface searchPetByFiltersUseCaseRequest {
   age?: string
   size?: string
   type?: string
-  city: string
+  city?: string
 }
 
 interface searchPetByFiltersUseCaseResponse {

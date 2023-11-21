@@ -41,6 +41,7 @@ describe('Edit Pet Use Case', () => {
     })
 
     const { pet } = await sut.execute({
+      org_id: orgId,
       id: createdPet.id,
       name: 'Novo nome',
       description: 'Nova descrição',

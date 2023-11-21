@@ -1,6 +1,6 @@
 import { Org } from '@prisma/client'
 import { OrgNotFoundError } from './errors/org-not-found'
-import { InMemoryOrgsRepository } from '@/repositories/in-memory/in-memory-orgs-repository'
+import { orgsRepository } from '@/repositories/orgs-repository'
 
 interface profileOrgUseCaseRequest {
   id: string
@@ -11,7 +11,7 @@ interface profileOrgUseCaseResponse {
 }
 
 export class ProfileOrgUseCase {
-  constructor(private orgsRepository: InMemoryOrgsRepository) {}
+  constructor(private orgsRepository: orgsRepository) {}
 
   async execute({
     id,

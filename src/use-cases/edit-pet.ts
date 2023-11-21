@@ -1,8 +1,10 @@
 import { petsRepository } from '@/repositories/pets-repository'
 import { PetNotFoundError } from './errors/pet-not-found'
 import { Pet } from '@prisma/client'
+import { InvalidCredentialsError } from './errors/invalid-credentials'
 
 interface EditPetUseCaseRequest {
+  org_id: string
   id: string
   name: string
   description: string
@@ -23,6 +25,7 @@ export class EditPetUseCase {
   constructor(private petsRepository: petsRepository) {}
 
   async execute({
+    org_id,
     id,
     name,
     description,
@@ -38,6 +41,10 @@ export class EditPetUseCase {
 
     if (!pet) {
       throw new PetNotFoundError()
+    }
+
+    if (pet.org_id !== org_id) {
+      throw new InvalidCredentialsError()
     }
 
     pet.name = name

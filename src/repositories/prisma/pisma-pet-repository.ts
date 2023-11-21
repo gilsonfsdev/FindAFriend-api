@@ -1,8 +1,27 @@
 import { prisma } from '../../lib/prisma'
-import { Prisma } from '@prisma/client'
+import { Pet, Prisma } from '@prisma/client'
 import { petsRepository } from '../pets-repository'
 
 export class PrismaPetsRepository implements petsRepository {
+  async delete(pet: Pet) {
+    await prisma.pet.delete({
+      where: {
+        id: pet.id,
+      },
+    })
+  }
+
+  async save(pet: Pet) {
+    const updatedPet = await prisma.pet.update({
+      where: {
+        id: pet.id,
+      },
+      data: pet,
+    })
+
+    return updatedPet
+  }
+
   async findManyByFilters(data: Partial<Prisma.PetCreateManyOrgInput>) {
     const pets = await prisma.pet.findMany({
       where: data,

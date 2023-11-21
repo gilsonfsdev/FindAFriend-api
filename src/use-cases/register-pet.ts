@@ -10,7 +10,6 @@ interface registerPetUseCaseRequest {
   size: string
   independency: string
   city: string
-  photo: string
   orgId: string
 }
 
@@ -30,7 +29,6 @@ export class RegisterPetUseCase {
     size,
     independency,
     city,
-    photo,
     orgId,
   }: registerPetUseCaseRequest): Promise<registerPetUseCaseResponse> {
     const pet = await this.petsRepository.create({
@@ -42,7 +40,6 @@ export class RegisterPetUseCase {
       size,
       independency,
       city,
-      photo,
       org_id: orgId,
     })
 

@@ -14,7 +14,6 @@ interface EditPetUseCaseRequest {
   size: string
   independency: string
   city: string
-  photo: string
 }
 
 interface EditPetUseCaseReponse {
@@ -35,7 +34,6 @@ export class EditPetUseCase {
     size,
     independency,
     city,
-    photo,
   }: EditPetUseCaseRequest): Promise<EditPetUseCaseReponse> {
     const pet = await this.petsRepository.findById(id)
 
@@ -55,7 +53,6 @@ export class EditPetUseCase {
     pet.size = size
     pet.independency = independency
     pet.city = city
-    pet.photo = photo
 
     await this.petsRepository.save(pet)
 

@@ -12,20 +12,10 @@ export async function create(request: FastifyRequest, reply: FastifyReply) {
     size: z.enum(['SMALL', 'MEDIUM', 'BIG']),
     independency: z.enum(['HIGH', 'LOW']),
     city: z.string(),
-    photo: z.string(),
   })
 
-  const {
-    name,
-    description,
-    type,
-    age,
-    energy,
-    size,
-    independency,
-    city,
-    photo,
-  } = createPetBodySchema.parse(request.body)
+  const { name, description, type, age, energy, size, independency, city } =
+    createPetBodySchema.parse(request.body)
 
   const createUseCase = MakeRegisterPetUseCase()
 
@@ -38,7 +28,6 @@ export async function create(request: FastifyRequest, reply: FastifyReply) {
     size,
     independency,
     city,
-    photo,
     orgId: request.user.sign.sub,
   })
 

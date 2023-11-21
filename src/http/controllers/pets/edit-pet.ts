@@ -12,20 +12,10 @@ export async function editPet(request: FastifyRequest, reply: FastifyReply) {
     size: z.string(),
     independency: z.string(),
     city: z.string(),
-    photo: z.string(),
   })
 
-  const {
-    name,
-    description,
-    type,
-    age,
-    energy,
-    size,
-    independency,
-    city,
-    photo,
-  } = signupBodySchema.parse(request.body)
+  const { name, description, type, age, energy, size, independency, city } =
+    signupBodySchema.parse(request.body)
 
   const profilePetParamsSchema = z.object({
     id: z.string(),
@@ -48,7 +38,6 @@ export async function editPet(request: FastifyRequest, reply: FastifyReply) {
     size,
     independency,
     city,
-    photo,
   })
 
   return reply.status(200).send({ pet })
